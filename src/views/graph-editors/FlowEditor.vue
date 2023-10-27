@@ -4,7 +4,8 @@
       <template slot="hintName">VG-Editor</template>
       <template slot="hintInfo">
         <p>VG-Editor：基于G6和Vue的可视化图形编辑器，是对GG-Editor的Vue组件化封装。</p>
-        <p>github地址：访问 <el-link type="success" href="https://github.com/ChrisShen93/VGEditor" target="_blank">VG-Editor</el-link></p>
+        <p>github地址：访问 <el-link type="success" href="https://github.com/ChrisShen93/VGEditor"
+            target="_blank">VG-Editor</el-link></p>
       </template>
     </Hints>
     <el-card shadow="always">
@@ -18,11 +19,7 @@
               <FlowPanelItem />
             </div>
             <div class="editor-container__main">
-              <Flow
-                :data="flowData"
-                :graph="{ mode: 'readOnly' }"
-                :on-node-click="handleNodeClick"
-              />
+              <Flow :data="flowData" :graph="{ mode: 'readOnly' }" :on-node-click="handleNodeClick" />
             </div>
             <div class="editor-container__panel">
               <FlowPanelDetail />
@@ -31,11 +28,7 @@
           </div>
         </div>
         <FlowContextMenu graph-type="flow" />
-        <RegisterEdge
-          name="custom-polyline"
-          extend="flow-polyline"
-          :config="customEdgeConfig"
-        />
+        <RegisterEdge name="custom-polyline" extend="flow-polyline" :config="customEdgeConfig" />
       </VGEditor>
     </el-card>
   </div>
@@ -47,7 +40,7 @@ import FlowToolbar from '@/components/GraphEditorEle/ToolBar'
 import { FlowPanelItem } from '@/components/GraphEditorEle/PanelItem'
 import { FlowPanelDetail } from '@/components/GraphEditorEle/PanelDetail'
 import FlowContextMenu from '@/components/GraphEditorEle/ContextMenu'
-import Hints from '@/components/Hints'
+import Hints from '@/components/Hints/index.vue'
 import flowData from './flow-data'
 
 export default {
@@ -90,9 +83,11 @@ export default {
 
 <style lang="less">
 @import "../../assets/less/graph-editor";
+
 .flow-editor {
   display: flex;
   flex-direction: column;
+
   .el-card {
     min-height: 650px;
   }

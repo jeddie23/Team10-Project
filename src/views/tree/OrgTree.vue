@@ -4,7 +4,8 @@
       <template slot="hintName">树状组织图</template>
       <template slot="hintInfo">
         <p>v-org-tree：基于vue的树结构组织图，可用于公司组织架构展示</p>
-        <p>github地址：访问 <el-link type="success" href="https://github.com/lison16/v-org-tree" target="_blank">v-org-tree</el-link></p>
+        <p>github地址：访问 <el-link type="success" href="https://github.com/lison16/v-org-tree"
+            target="_blank">v-org-tree</el-link></p>
       </template>
     </Hints>
     <div class="ctrl-box">
@@ -28,9 +29,9 @@
 </template>
 
 <script>
-import OrgView from '@/components/OrgTree/OrgView'
-import ZoomController from '@/components/OrgTree/ZoomController'
-import Hints from '@/components/Hints'
+import OrgView from '../../components/OrgTree/OrgView.vue'
+import ZoomController from '../../components/OrgTree/ZoomController.vue'
+import Hints from '../../components/Hints.vue'
 
 export default {
   name: 'OrgTree',
@@ -61,9 +62,11 @@ export default {
 .org-tree-wrapper {
   position: relative;
   min-height: 580px;
+
   .ctrl-box {
     .btn-item {
       margin-bottom: 10px;
+
       .el-radio-button--small {
         .el-radio-button__inner {
           padding: 5px 10px;
@@ -71,6 +74,7 @@ export default {
       }
     }
   }
+
   .zoom-box {
     position: absolute;
     bottom: 0;

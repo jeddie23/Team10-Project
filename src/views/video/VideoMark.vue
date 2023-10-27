@@ -7,18 +7,13 @@
           <div class="box-wrapper">
             <div class="drag-container">
               <video :src="videoSrc" controls />
-              <ElementDrr
-                v-for="(item, index) in elements"
-                :key="index"
-                :element="item"
-                :handles="dragHandles(item.type)"
-                :style="elementZIndex(item.type)"
-                @updateActiveEle="updateActiveEle"
-              >
+              <ElementDrr v-for="(item, index) in elements" :key="index" :element="item" :handles="dragHandles(item.type)"
+                :style="elementZIndex(item.type)" @updateActiveEle="updateActiveEle">
                 <!-- 图片 -->
-                <img v-if="item.type==='image'" :src="item.src" draggable="false">
+                <img v-if="item.type === 'image'" :src="item.src" draggable="false">
                 <!-- 文字 -->
-                <ImageRichText v-if="item.type === 'text'" v-model="item.text" :element="item" :active-ele-text="activeEleText" />
+                <ImageRichText v-if="item.type === 'text'" v-model="item.text" :element="item"
+                  :active-ele-text="activeEleText" />
               </ElementDrr>
             </div>
           </div>
@@ -48,11 +43,11 @@
 </template>
 
 <script>
-import Hints from '@/components/Hints'
-import ElementDrr from '@/components/ElementDrr'
-import ImageRichText from '@/components/ImageRichText'
-import TextSetting from '@/components/TextSetting'
-import UploadImage from '@/components/UploadImage'
+import Hints from '@/components/Hints/index.vue'
+import ElementDrr from '@/components/ElementDrr/index.vue'
+import ImageRichText from '@/components/ImageRichText/index.vue'
+import TextSetting from '@/components/TextSetting/index.vue'
+import UploadImage from '@/components/UploadImage/index.vue'
 import { calcImageSize } from '@/utils'
 
 export default {
@@ -74,7 +69,7 @@ export default {
       }
       return active
     },
-    videoSrc(){
+    videoSrc() {
       return this.$route.query.videoUrl
     }
   },
@@ -207,10 +202,12 @@ export default {
     justify-content: center;
     height: 550px;
     overflow: hidden;
+
     .drag-container {
       position: relative;
       width: 850px;
       height: 478px;
+
       video {
         position: absolute;
         top: 0;
@@ -218,21 +215,26 @@ export default {
         width: 100%;
         height: 100%;
       }
+
       .z-drr-container {
         border: 1px dashed transparent;
+
         &.z-active {
           border: 1px dashed #2e95ff;
         }
       }
     }
   }
+
   .box-content {
     height: 550px;
     overflow: hidden;
+
     .form-wrapper {
       width: 300px;
       margin: 50px auto 0;
     }
+
     .el-button {
       width: 210px;
     }

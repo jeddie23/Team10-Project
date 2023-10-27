@@ -4,10 +4,11 @@
       <i class="icon el-icon-arrow-left" />
     </el-button>
     <div ref="tagsViews" class="tags-views" @DOMMouseScroll="handleScroll" @mousewheel="handleScroll">
-      <div ref="tagsCont" class="tags-cont" :style="{left: tagsContLeft + 'px'}">
+      <div ref="tagsCont" class="tags-cont" :style="{ left: tagsContLeft + 'px' }">
         <transition-group>
           <router-link v-for="item in visitedViews" ref="tagsItem" :key="item.name" :to="{ path: item.path }">
-            <TagItem :class="{active: isActive(item)}" :fixed="item.meta.fixed" @on-close="handleSelectedClose(item)">{{ item.title }}</TagItem>
+            <TagItem :class="{ active: isActive(item) }" :fixed="item.meta.fixed" @on-close="handleSelectedClose(item)">{{
+              item.title }}</TagItem>
           </router-link>
         </transition-group>
       </div>
@@ -32,7 +33,7 @@
 <script>
 import path from 'path'
 import { mapGetters, mapMutations } from 'vuex'
-import TagItem from './TagItem'
+import TagItem from './TagItem.vue'
 
 export default {
   name: 'TagsView',
@@ -188,9 +189,11 @@ export default {
 .tags-nav-wrapper {
   width: 100%;
   height: 40px;
+
   .icon {
     font-size: 18px;
   }
+
   .btn-con {
     float: left;
     width: 28px;
@@ -200,6 +203,7 @@ export default {
     border-bottom: solid 1px #f0f0f0;
     box-sizing: border-box;
   }
+
   .btn-close {
     width: 40px;
     padding-top: 10px;
@@ -207,6 +211,7 @@ export default {
     border-left: solid 1px #f0f0f0;
     cursor: pointer;
   }
+
   .tags-views {
     position: relative;
     float: left;
@@ -215,6 +220,7 @@ export default {
     background: #f0f0f0;
     box-shadow: inset 0 0 3px 2px #6464641a;
     overflow: hidden;
+
     .tags-cont {
       position: absolute;
       padding: 0 4px;

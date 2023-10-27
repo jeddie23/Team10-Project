@@ -4,7 +4,8 @@
       <template slot="hintName">Form表单组件</template>
       <template slot="hintInfo">
         <p>element-Form：使用elementUI的Form组件，可用以收集、校验和提交数据等操作</p>
-        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/2.13/#/zh-CN/component/form" target="_blank">element-Form</el-link></p>
+        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/2.13/#/zh-CN/component/form"
+            target="_blank">element-Form</el-link></p>
       </template>
     </Hints>
     <el-card shadow="always">
@@ -96,14 +97,8 @@
             </el-checkbox-group>
           </el-form-item>
           <el-form-item label="文本域（长度限制）：" prop="content">
-            <el-input
-              v-model="ruleForm.content"
-              type="textarea"
-              :autosize="{ minRows: 3, maxRows: 5 }"
-              placeholder="请输入内容"
-              maxlength="50"
-              show-word-limit
-            />
+            <el-input v-model="ruleForm.content" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
+              placeholder="请输入内容" maxlength="50" show-word-limit />
           </el-form-item>
         </div>
         <el-form-item class="submit-box">
@@ -116,7 +111,7 @@
 </template>
 
 <script>
-import Hints from '@/components/Hints'
+import Hints from '@/components/Hints/index.vue'
 import { selectData, cascaderData } from './data'
 
 export default {
@@ -211,22 +206,28 @@ export default {
   .el-card {
     padding-top: 20px;
   }
+
   .form-list {
     width: 45%;
     margin: 0 auto;
+
     .el-rate {
       line-height: 2;
     }
-    > .el-form-item {
+
+    >.el-form-item {
       margin-bottom: 22px;
+
       .line {
         text-align: center;
       }
+
       .tip-title {
         text-align: right;
         color: #606266;
       }
     }
+
     .submit-box {
       margin-top: 35px;
       margin-left: 0;

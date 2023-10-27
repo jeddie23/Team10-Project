@@ -4,7 +4,8 @@
       <template slot="hintName">拖拽列表</template>
       <template slot="hintInfo">
         <p>Vue.Draggable：基于Sortable.js的vue组件，用以实现拖拽功能</p>
-        <p>github地址：访问 <el-link type="success" href="https://github.com/SortableJS/Vue.Draggable" target="_blank">Vue.Draggable</el-link></p>
+        <p>github地址：访问 <el-link type="success" href="https://github.com/SortableJS/Vue.Draggable"
+            target="_blank">Vue.Draggable</el-link></p>
       </template>
     </Hints>
     <el-row :gutter="20">
@@ -50,7 +51,7 @@
 
 <script>
 import Draggable from 'vuedraggable'
-import Hints from '@/components/Hints'
+import Hints from '@/components/Hints/index.vue'
 const message = [
   'ECMAScript6',
   'VueJS',
@@ -106,12 +107,13 @@ export default {
 .drag-list-wrapper {
   .list-cont {
     height: 510px;
+
     .el-card {
       margin-bottom: 10px;
+
       .el-card__body {
         padding: 14px 20px;
       }
     }
   }
-}
-</style>
+}</style>

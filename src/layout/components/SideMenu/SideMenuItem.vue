@@ -3,7 +3,7 @@
     <template v-if="hasOnlyOneChild(item, item.children) && (onlyOneChild.noChildren || !onlyOneChild.children)">
       <LinkItem v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
-          <Item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title" />
+          <Item :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" :title="onlyOneChild.meta.title" />
         </el-menu-item>
       </LinkItem>
     </template>
@@ -12,12 +12,7 @@
       <template slot="title">
         <Item :icon="item.meta && item.meta.icon" :title="item.meta && item.meta.title" />
       </template>
-      <SideMenuItem
-        v-for="child in item.children"
-        :key="child.path"
-        :item="child"
-        :base-path="resolvePath(child.path)"
-      />
+      <SideMenuItem v-for="child in item.children" :key="child.path" :item="child" :base-path="resolvePath(child.path)" />
     </el-submenu>
   </div>
 </template>
@@ -25,8 +20,8 @@
 <script>
 import path from 'path'
 import { isExternal } from '@/utils/validate'
-import LinkItem from './LinkItem'
-import Item from './Item'
+import LinkItem from './LinkItem.vue'
+import Item from './Item.vue'
 export default {
   name: 'SideMenuItem',
   components: { LinkItem, Item },
@@ -34,7 +29,7 @@ export default {
     item: {
       required: true,
       type: Object,
-      default: () => {}
+      default: () => { }
     },
     basePath: {
       type: String,
@@ -71,6 +66,4 @@ export default {
 }
 </script>
 
-<style lang="less">
-
-</style>
+<style lang="less"></style>

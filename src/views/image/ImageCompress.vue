@@ -39,12 +39,7 @@
               </el-form-item>
               <el-form-item label="图片质量：">
                 <el-select v-model="imageObj.quality" placeholder="请选择">
-                  <el-option
-                    v-for="item in qualityOptions"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                  />
+                  <el-option v-for="item in qualityOptions" :key="item.value" :label="item.label" :value="item.value" />
                 </el-select>
               </el-form-item>
               <div>
@@ -59,8 +54,8 @@
 </template>
 
 <script>
-import Hints from '@/components/Hints'
-import UploadImage from '@/components/UploadImage'
+import Hints from '@/components/Hints/index.vue'
+import UploadImage from '@/components/UploadImage/index.vue'
 import { base64toBlob, calcImageSize } from '@/utils'
 const qualityOptions = [
   { label: 100, value: 1 },

@@ -8,39 +8,26 @@
       <!--字体-->
       <el-form-item label="字体">
         <el-select v-model="activeEleText.style.fontFamily" size="small">
-          <el-option
-            v-for="item in fontFamilyData"
-            :key="item.value"
-            :label="item.value"
-            :value="item.value"
-            :style="{'fontFamily': item.value}"
-          />
+          <el-option v-for="item in fontFamilyData" :key="item.value" :label="item.value" :value="item.value"
+            :style="{ 'fontFamily': item.value }" />
         </el-select>
       </el-form-item>
       <!--字号-->
       <el-form-item label="字号">
-        <el-select
-          v-model="activeEleText.style.fontSize"
-          size="small"
-        >
-          <el-option
-            v-for="item in fontSizeData"
-            :key="item.value"
-            :label="item.value"
-            :value="item.value"
-          />
+        <el-select v-model="activeEleText.style.fontSize" size="small">
+          <el-option v-for="item in fontSizeData" :key="item.value" :label="item.value" :value="item.value" />
         </el-select>
       </el-form-item>
       <!--颜色-->
       <el-form-item label="颜色">
         <!-- 字体颜色 -->
         <div class="color-box">
-          <i class="vue-dsn-icon-wenzise color-icon" :style="{'color': activeEleText.style.color}" />
+          <i class="vue-dsn-icon-wenzise color-icon" :style="{ 'color': activeEleText.style.color }" />
           <el-color-picker v-model="activeEleText.style.color" />
         </div>
         <!-- 背景颜色 -->
         <div class="color-box">
-          <i class="vue-dsn-icon-beijingse color-icon icon-bg" :style="{'color': activeEleText.style.backgroundColor}" />
+          <i class="vue-dsn-icon-beijingse color-icon icon-bg" :style="{ 'color': activeEleText.style.backgroundColor }" />
           <el-color-picker v-model="activeEleText.style.backgroundColor" />
         </div>
         <div class="style-box">
@@ -70,7 +57,7 @@
 
 <script>
 import { base64toBlob } from '@/utils'
-import ImageRichText from '../ImageRichText'
+import ImageRichText from '../ImageRichText/index.vue'
 
 const fontFamilyData = [
   { value: '黑体' },
@@ -97,7 +84,7 @@ export default {
   props: {
     activeEleText: {
       type: Object,
-      default: () => {}
+      default: () => { }
     }
   },
   data() {

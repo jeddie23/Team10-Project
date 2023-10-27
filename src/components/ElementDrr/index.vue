@@ -1,28 +1,14 @@
 <template>
-  <VueDrr
-    class="element-drr-wrapper"
-    :x="element.x"
-    :y="element.y"
-    :w="element.w"
-    :h="element.h"
-    :handles="handles"
-    :active="element.active"
-    :minw="80"
-    :minh="18"
-    :parent="true"
-    :rotatable="false"
-    @dragstop="handleDragStop"
-    @resizing="handleResizing"
-    @resizestop="handleResizeStop"
-    @deactivated="handleDeactivate"
-    @activated="handleActivated"
-  >
+  <VueDrr class="element-drr-wrapper" :x="element.x" :y="element.y" :w="element.w" :h="element.h" :handles="handles"
+    :active="element.active" :minw="80" :minh="18" :parent="true" :rotatable="false" @dragstop="handleDragStop"
+    @resizing="handleResizing" @resizestop="handleResizeStop" @deactivated="handleDeactivate"
+    @activated="handleActivated">
     <slot />
   </VueDrr>
 </template>
 
 <script>
-import VueDrr from '@/components/VueDrr'
+import VueDrr from '@/components/VueDrr/index.vue'
 
 export default {
   name: 'ElementDrr',
@@ -30,7 +16,7 @@ export default {
   props: {
     element: {
       type: Object,
-      default: () => {}
+      default: () => { }
     },
     handles: {
       type: Array,
@@ -104,6 +90,7 @@ export default {
 
 <style lang="less">
 .element-drr-wrapper {
+
   .z-handle-nw,
   .z-handle-ne,
   .z-handle-sw,

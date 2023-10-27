@@ -4,7 +4,8 @@
       <template slot="hintName">Tree树形控件</template>
       <template slot="hintInfo">
         <p>element-tree：基于elementUI的Tree组件，可用于清晰的层级结构展示信息，并能展开或折叠</p>
-        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/#/zh-CN/component/tree" target="_blank">element-tree</el-link></p>
+        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/#/zh-CN/component/tree"
+            target="_blank">element-tree</el-link></p>
       </template>
     </Hints>
     <el-row :gutter="20">
@@ -12,15 +13,8 @@
         <el-card shadow="always">
           <div slot="header" class="title">可选择节点</div>
           <div style="height: 360px;">
-            <el-tree
-              :data="treeData"
-              node-key="id"
-              show-checkbox
-              default-expand-all
-              :default-checked-keys="[5]"
-              :props="defaultProps"
-              @check-change="handleCheckChange"
-            />
+            <el-tree :data="treeData" node-key="id" show-checkbox default-expand-all :default-checked-keys="[5]"
+              :props="defaultProps" @check-change="handleCheckChange" />
           </div>
         </el-card>
       </el-col>
@@ -28,13 +22,7 @@
         <el-card shadow="always">
           <div slot="header" class="title">懒加载节点</div>
           <div style="height: 360px;">
-            <el-tree
-              :props="props"
-              :load="loadNode"
-              lazy
-              show-checkbox
-              @check-change="handleCheckChange"
-            />
+            <el-tree :props="props" :load="loadNode" lazy show-checkbox @check-change="handleCheckChange" />
           </div>
         </el-card>
       </el-col>
@@ -42,13 +30,7 @@
         <el-card shadow="always">
           <div slot="header" class="title">可拖拽节点</div>
           <div style="height: 360px;">
-            <el-tree
-              :data="treeData"
-              node-key="id"
-              default-expand-all
-              :props="defaultProps"
-              draggable
-            />
+            <el-tree :data="treeData" node-key="id" default-expand-all :props="defaultProps" draggable />
           </div>
         </el-card>
       </el-col>
@@ -57,7 +39,7 @@
 </template>
 
 <script>
-import Hints from '@/components/Hints'
+import Hints from '@/components/Hints/index.vue'
 import { treeData } from './data'
 
 export default {

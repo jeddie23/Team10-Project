@@ -4,7 +4,8 @@
       <template slot="hintName">VG-Editor</template>
       <template slot="hintInfo">
         <p>VG-Editor：基于G6和Vue的可视化图形编辑器，是对GG-Editor的Vue组件化封装。</p>
-        <p>github地址：访问 <el-link type="success" href="https://github.com/ChrisShen93/VGEditor" target="_blank">VG-Editor</el-link></p>
+        <p>github地址：访问 <el-link type="success" href="https://github.com/ChrisShen93/VGEditor"
+            target="_blank">VG-Editor</el-link></p>
       </template>
     </Hints>
     <el-card shadow="always">
@@ -34,7 +35,7 @@ import VGEditor, { Mind, Minimap } from 'vg-editor'
 import MindToolbar from '@/components/GraphEditorEle/ToolBar'
 import { MindPanelDetail } from '@/components/GraphEditorEle/PanelDetail'
 import MindContextMenu from '@/components/GraphEditorEle/ContextMenu'
-import Hints from '@/components/Hints'
+import Hints from '@/components/Hints/index.vue'
 import mockData from './mind-data'
 
 export default {
@@ -63,11 +64,12 @@ export default {
 
 <style lang="less">
 @import "../../assets/less/graph-editor";
+
 .mind-editor {
   display: flex;
   flex-direction: column;
+
   .el-card {
     min-height: 650px;
   }
-}
-</style>
+}</style>

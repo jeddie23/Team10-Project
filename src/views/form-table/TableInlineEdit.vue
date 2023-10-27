@@ -4,7 +4,8 @@
       <template slot="hintName">Table表格组件(行内编辑)</template>
       <template slot="hintInfo">
         <p>element-Table：使用elementUI的Table组件，可用于展示多条结构类似的数据，并对其进行行内编辑操作</p>
-        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/2.13/TableClassic.vue#/zh-CN/component/table" target="_blank">element-Table</el-link></p>
+        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/2.13/TableClassic.vue#/zh-CN/component/table"
+            target="_blank">element-Table</el-link></p>
       </template>
     </Hints>
     <el-card shadow="always">
@@ -37,7 +38,7 @@
 
 <script>
 import { getTableList } from '@/api'
-import Hints from '@/components/Hints'
+import Hints from '@/components/Hints/index.vue'
 
 export default {
   name: 'TableInlineEdit',
@@ -92,8 +93,9 @@ export default {
 .table-inline-edit {
   .el-table thead {
     font-weight: 600;
+
     th {
-      padding: 16px 0 15px!important;
+      padding: 16px 0 15px !important;
       background-color: #f2f3f7;
     }
   }

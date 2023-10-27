@@ -4,12 +4,13 @@
       <template slot="hintName">数字滚动组件</template>
       <template slot="hintInfo">
         <p>vue-countTo:一个无依赖、轻量级的vue数字滚动插件，可以通过你自己的方式轻松编写</p>
-        <p>github地址：访问 <el-link type="success" href="https://github.com/PanJiaChen/vue-countTo" target="_blank">vue-countTo</el-link></p>
+        <p>github地址：访问 <el-link type="success" href="https://github.com/PanJiaChen/vue-countTo"
+            target="_blank">vue-countTo</el-link></p>
       </template>
     </Hints>
     <el-row class="count-to-box" :gutter="20">
       <el-col :span="6">
-        <el-card shadow="always" :body-style="{padding: '0px'}">
+        <el-card shadow="always" :body-style="{ padding: '0px' }">
           <div slot="header" class="title">正向增加</div>
           <div class="box-cont add">
             <CountTo :start-val="0" :end-val="2020" :duration="4000" />
@@ -17,11 +18,12 @@
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-card shadow="always" :body-style="{padding: '0px'}">
+        <el-card shadow="always" :body-style="{ padding: '0px' }">
           <div slot="header" class="title">自定义配置</div>
           <div class="cont-wrapper">
             <div class="cont-set-data">
-              <CountTo ref="countBox" :start-val="startVal" :end-val="endVal" :duration="duration" :decimals="decimals" :separator="separator" :prefix="prefix" :suffix="suffix" :autoplay="false" />
+              <CountTo ref="countBox" :start-val="startVal" :end-val="endVal" :duration="duration" :decimals="decimals"
+                :separator="separator" :prefix="prefix" :suffix="suffix" :autoplay="false" />
             </div>
             <div class="box-cont-set">
               <div class="cont-set-item">
@@ -54,7 +56,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
-        <el-card shadow="always" :body-style="{padding: '0px'}">
+        <el-card shadow="always" :body-style="{ padding: '0px' }">
           <div slot="header" class="title">反向减少</div>
           <div class="box-cont">
             <CountTo :start-val="2020" :end-val="0" :duration="4000" />
@@ -66,7 +68,7 @@
 </template>
 
 <script>
-import Hints from '@/components/Hints'
+import Hints from '@/components/Hints/index.vue'
 import CountTo from 'vue-count-to'
 export default {
   name: 'CountToPage',
@@ -99,6 +101,7 @@ export default {
     display: flex;
     height: 300px;
     box-sizing: border-box;
+
     span {
       display: block;
       width: 110px;
@@ -108,31 +111,38 @@ export default {
       text-align: center;
       color: #30B08F;
     }
+
     &.add {
       span {
         color: #E65D6E;
       }
     }
   }
+
   .cont-wrapper {
     height: 300px;
     padding: 30px 50px 30px 50px;
     box-sizing: border-box;
+
     .cont-set-item {
       display: inline-block;
       width: 32%;
       margin-bottom: 10px;
+
       label {
         display: inline-block;
         vertical-align: middle;
         width: 40%;
       }
+
       .el-input {
         width: 50%;
       }
     }
+
     .cont-set-data {
       height: 100px;
+
       span {
         display: block;
         width: 270px;
@@ -143,5 +153,4 @@ export default {
       }
     }
   }
-}
-</style>
+}</style>

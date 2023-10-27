@@ -3,14 +3,14 @@
 </template>
 
 <script>
-import { videoPlayer } from 'vue-video-player'
-import 'video.js/dist/video-js.css'
+// import { videoPlayer } from 'vue-video-player'
+// import 'video.js/dist/video-js.css'
 
 export default {
   name: 'VueVideoPlayer',
   props: ["url"],
   components: { videoPlayer },
-  created(){
+  created() {
     console.log(this.url);
   },
   data() {
@@ -41,7 +41,7 @@ export default {
   },
   watch: {
     'url': {
-      handler(){
+      handler() {
         console.log(6);
         this.playerOptions.sources[0].src = this.url;
       }

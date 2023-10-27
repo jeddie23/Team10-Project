@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Layout from "../layout";
+import Layout from "../layout/index.vue";
 import { asyncRoutes } from "./routes";
 
 Vue.use(Router);
@@ -15,7 +15,7 @@ Vue.use(Router);
  * */
 let obj = sessionStorage.getItem('userinfo')
 let role = ''
-if(obj){
+if (obj) {
   obj = JSON.parse(obj);
   obj.userRole
 }
@@ -34,7 +34,7 @@ export const constantRoutes = [
       {
         path: "generalguide",
         name: "generalGuide",
-        component: () => import("../views/hospitalGuide/generalGuide"),
+        component: () => import("../views/hospitalGuide/generalGuide.vue"),
         meta: {
           title: "综合导览",
         },
@@ -78,7 +78,7 @@ export const constantRoutes = [
         path: "guidedetail/:name",
         name: "GuideDetail",
         hidden: true,
-        component: () => import("../views/hospitalGuide/GuideDetail"),
+        component: () => import("../views/hospitalGuide/GuideDetail.vue"),
         meta: {
           title: "导览详情",
         },
@@ -165,7 +165,7 @@ export const constantRoutes = [
     path: "/studenttest",
     name: "studentTest",
     component: Layout,
-    hidden: role=='student'?false:true,
+    hidden: role == 'student' ? false : true,
     redirect: "/student/paperlist",
     meta: {
       title: "学生测试",
@@ -195,21 +195,21 @@ export const constantRoutes = [
   {
     path: "/login",
     name: "Login",
-    component: () => import("../views/Login"),
+    component: () => import("../views/Login.vue"),
     hidden: true,
     meta: { title: "登录", auth: false },
   },
   {
     path: "401",
     name: "401",
-    component: () => import("../views/error-page/401"),
+    component: () => import("../views/error-page/401.vue"),
     hidden: true,
     meta: { title: "401", auth: false },
   },
   {
     path: "404",
     name: "404",
-    component: () => import("../views/error-page/404"),
+    component: () => import("../views/error-page/404.vue"),
     hidden: true,
     meta: { title: "404", auth: false },
   },
@@ -241,7 +241,7 @@ export const constantRoutes = [
       {
         path: "user-center",
         name: "UserCenter",
-        component: () => import("../views/UserCenter"),
+        component: () => import("../views/UserCenter.vue"),
         meta: {
           title: "个人中心",
           auth: false,
@@ -272,7 +272,7 @@ router.beforeEach((to, from, next) => {
           router.addRoute(asyncRoutes[i]);
           allRoute.push(asyncRoutes[i])
         }
-        sessionStorage.setItem('routes',JSON.stringify(allRoute))
+        sessionStorage.setItem('routes', JSON.stringify(allRoute))
         next({ ...to });
       } else {
         next();

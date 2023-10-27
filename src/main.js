@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
 import router from './router'
 import store from './store'
 
@@ -21,7 +21,7 @@ Vue.prototype.$qs = qs
 Vue.directive('auth', {
   bind: function (el, binding) {
     let flag = sessionStorage.getItem('userinfo')
-    let {userRole} = JSON.parse(sessionStorage.getItem('userinfo'))
+    let { userRole } = JSON.parse(sessionStorage.getItem('userinfo'))
     if (binding.value == userRole) {
       el.style.display = "inline-block";
     } else {

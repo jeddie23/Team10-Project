@@ -4,16 +4,11 @@
       <template slot="hintName">Markdown编辑器</template>
       <template slot="hintInfo">
         <p>mavonEditor：是一款基于vue的Markdown编辑器，比较适合博客系统</p>
-        <p>github地址：立即访问 <el-link type="success" href="https://github.com/hinesboy/mavonEditor" target="_blank">mavonEditor</el-link></p>
+        <p>github地址：立即访问 <el-link type="success" href="https://github.com/hinesboy/mavonEditor"
+            target="_blank">mavonEditor</el-link></p>
       </template>
     </Hints>
-    <mavonEditor
-      ref="markdownEle"
-      v-model="content"
-      style="min-height: 500px"
-      @imgAdd="imageAdd"
-      @imgDel="imageDel"
-    />
+    <mavonEditor ref="markdownEle" v-model="content" style="min-height: 500px" @imgAdd="imageAdd" @imgDel="imageDel" />
   </div>
 </template>
 
@@ -21,7 +16,7 @@
 import { axios } from 'axios'
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-import Hints from '@/components/Hints'
+import Hints from '../../components/Hints/index.vue'
 
 export default {
   name: 'MarkdownEditor',

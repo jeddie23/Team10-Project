@@ -25,10 +25,10 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
-import HeaderBar from './components/HeaderBar/index'
-import SideMenu from './components/SideMenu/index'
-import TagsNav from './components/TagsView/index'
-import MainView from './components/MainView/index'
+import HeaderBar from './components/HeaderBar/index.vue'
+import SideMenu from './components/SideMenu/index.vue'
+import TagsNav from './components/TagsView/index.vue'
+import MainView from './components/MainView/index.vue'
 import Logo from '@/assets/img/logo.png'
 import LogoIcon from '@/assets/img/logo-icon.png'
 
@@ -71,25 +71,31 @@ export default {
 
 <style lang="less">
 @import "../assets/less/scroll-bar";
-.app-wrapper{
+
+.app-wrapper {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  .side-container{
+
+  .side-container {
     float: left;
     height: 100vh;
     transition: width 0.5s;
     background-color: #263238;
+
     &.unfolded {
       width: 240px;
+
       .logo {
         margin-left: 5px;
         width: 230px;
         height: 120px;
       }
     }
+
     &.folded {
       width: 64px;
+
       .logo {
         width: 64px;
         height: 64px;
@@ -97,32 +103,37 @@ export default {
         box-sizing: border-box;
       }
     }
+
     img {
       display: block;
       width: 100%;
       height: 100%;
     }
   }
-  .main-container{
+
+  .main-container {
     float: left;
     height: 100vh;
     transition: width 0.5s;
+
     &.normal {
       width: calc(100% - 260px);
     }
+
     &.wider {
       width: calc(100% - 64px);
     }
-    .main-content{
-      .el-scrollbar{
+
+    .main-content {
+      .el-scrollbar {
         height: calc(100vh - 64px - 40px);
         .scroll-bar;
-        .scrollbar{
+
+        .scrollbar {
           height: 100%;
           overflow-x: hidden;
         }
       }
     }
   }
-}
-</style>
+}</style>

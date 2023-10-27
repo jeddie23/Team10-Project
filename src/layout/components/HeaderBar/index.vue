@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import FoldSideMenu from '@/components/FoldSideMenu'
-import BreadCrumbs from '@/components/BreadCrumbs'
-import FullScreen from '@/components/FullScreen'
-import LangSelect from '@/components/LangSelect'
-import GitHubLink from '@/components/GitHubLink'
-import UserAvatar from '@/components/UserAvatar'
+import FoldSideMenu from '@/components/FoldSideMenu/index.vue'
+import BreadCrumbs from '@/components/BreadCrumbs/index.vue'
+import FullScreen from '@/components/FullScreen/index.vue'
+import LangSelect from '@/components/LangSelect/index.vue'
+import GitHubLink from '@/components/GitHubLink/index.vue'
+import UserAvatar from '@/components/UserAvatar/index.vue'
 
 export default {
   components: {
@@ -32,12 +32,13 @@ export default {
 </script>
 
 <style lang="less">
-  .header-bar {
-    height: 32px;
-    padding: 16px 20px;
-    .header-right {
-      float: right;
-      width: 200px;
-    }
+.header-bar {
+  height: 32px;
+  padding: 16px 20px;
+
+  .header-right {
+    float: right;
+    width: 200px;
   }
+}
 </style>

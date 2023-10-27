@@ -1,4 +1,4 @@
-import Layout from '../layout'
+import Layout from '../layout/index.vue'
 
 /**
  * hidden: true                  如果设置为 true，该项菜单将不会显示在菜单栏中(默认为 false)
@@ -147,7 +147,7 @@ export const asyncRoutes = [
       {
         path: 'image-cropper',
         name: 'ImageCropper',
-        component: () => import('../views/image/ImageCropper'),
+        component: () => import('../views/image/ImageCropper.vue'),
         meta: {
           title: '图片裁剪'
         }
@@ -155,7 +155,7 @@ export const asyncRoutes = [
       {
         path: 'image-compress',
         name: 'ImageCompress',
-        component: () => import('../views/image/ImageCompress'),
+        component: () => import('../views/image/ImageCompress.vue'),
         meta: {
           title: '图片压缩'
         }
@@ -163,7 +163,7 @@ export const asyncRoutes = [
       {
         path: 'image-synthesizer',
         name: 'ImageSynthesizer',
-        component: () => import('../views/image/ImageSynthesizer'),
+        component: () => import('../views/image/ImageSynthesizer.vue'),
         meta: {
           title: '图片合成'
         }
@@ -185,7 +185,7 @@ export const asyncRoutes = [
       {
         path: 'video-mark',
         name: 'VideoMark',
-        component: () => import('../views/video/VideoMark'),
+        component: () => import('../views/video/VideoMark.vue'),
         meta: {
           title: '视频处理'
         }
@@ -262,7 +262,7 @@ export const asyncRoutes = [
       {
         path: 'case-index',
         name: 'CaseIndex',
-        component: () => import('../views/case/CaseIndex'),
+        component: () => import('../views/case/CaseIndex.vue'),
         meta: {
           title: '病例管理'
         }

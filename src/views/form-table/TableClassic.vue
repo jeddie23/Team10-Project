@@ -4,7 +4,8 @@
       <template slot="hintName">Table表格组件</template>
       <template slot="hintInfo">
         <p>element-Table：使用elementUI的Table组件，可用于展示多条结构类似的数据，并对其进行相关操作</p>
-        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/2.13/TableClassic.vue#/zh-CN/component/table" target="_blank">element-Table</el-link></p>
+        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/2.13/TableClassic.vue#/zh-CN/component/table"
+            target="_blank">element-Table</el-link></p>
       </template>
     </Hints>
     <el-card shadow="always">
@@ -16,13 +17,7 @@
         <el-button type="danger" @click="batchDelete">批量删除</el-button>
       </div>
       <!-- 查询栏 -->
-      <el-form
-        ref="searchForm"
-        :inline="true"
-        :model="listQuery"
-        label-width="90px"
-        class="search-form"
-      >
+      <el-form ref="searchForm" :inline="true" :model="listQuery" label-width="90px" class="search-form">
         <el-form-item label="编号">
           <el-input v-model="listQuery.id" placeholder="编号" />
         </el-form-item>
@@ -42,15 +37,8 @@
         </el-form-item>
       </el-form>
       <!-- 表格栏 -->
-      <el-table
-        ref="multipleTable"
-        v-loading="listLoading"
-        :data="tableData"
-        tooltip-effect="dark"
-        style="width: 100%"
-        size="medium"
-        @selection-change="handleSelectionChange"
-      >
+      <el-table ref="multipleTable" v-loading="listLoading" :data="tableData" tooltip-effect="dark" style="width: 100%"
+        size="medium" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="60" />
         <el-table-column prop="id" label="编号" align="center" width="120" sortable />
         <el-table-column prop="name" label="姓名" align="center">
@@ -88,27 +76,18 @@
         <el-table-column prop="hobby" label="爱好" align="center" width="300" show-overflow-tooltip />
         <el-table-column label="操作" align="center" width="200">
           <template slot-scope="scope">
-            <el-button size="mini" :disabled="scope.row.forbid" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button size="mini" :disabled="scope.row.forbid"
+              @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
             <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
       <!-- 分页栏 -->
-      <Pagination :total="total" :page.sync="listQuery.currentPage" :limit.sync="listQuery.pageSize" @pagination="fetchData" />
+      <Pagination :total="total" :page.sync="listQuery.currentPage" :limit.sync="listQuery.pageSize"
+        @pagination="fetchData" />
       <!-- 新增/编辑 弹出栏 -->
-      <el-dialog
-        title="编辑"
-        :visible.sync="formVisible"
-        width="30%"
-        class="dialog-form"
-        :before-close="handleClose"
-      >
-        <el-form
-          ref="dialogForm"
-          :model="dialogForm"
-          :rules="formRules"
-          label-width="100px"
-        >
+      <el-dialog title="编辑" :visible.sync="formVisible" width="30%" class="dialog-form" :before-close="handleClose">
+        <el-form ref="dialogForm" :model="dialogForm" :rules="formRules" label-width="100px">
           <el-form-item label="姓名：" prop="name">
             <el-input v-model="dialogForm.name" />
           </el-form-item>
@@ -143,11 +122,7 @@
         </el-form>
       </el-dialog>
       <!-- 导入数据 弹出栏 -->
-      <el-dialog
-        title="导入数据"
-        :visible.sync="importVisible"
-        width="20%"
-      >
+      <el-dialog title="导入数据" :visible.sync="importVisible" width="20%">
         <div class="upload-box">
           <span>选择文件：</span>
           <Upload :files-format="filesFormat">
@@ -161,11 +136,7 @@
         </span>
       </el-dialog>
       <!-- 导出数据 弹出栏 -->
-      <el-dialog
-        title="导出数据"
-        :visible.sync="exportVisible"
-        width="30%"
-      >
+      <el-dialog title="导出数据" :visible.sync="exportVisible" width="30%">
         <div class="export-data">
           <el-button type="primary" @click="exportTable('xlsx')">EXCEL格式</el-button>
           <el-button type="primary" @click="exportTable('csv')">CSV格式</el-button>
@@ -180,9 +151,9 @@
 <script>
 import { getTableList } from '@/api'
 import excel from '@/utils/excel'
-import Pagination from '@/components/Pagination'
-import Upload from '@/components/Upload'
-import Hints from '@/components/Hints'
+import Pagination from '@/components/Pagination/index.vue'
+import Upload from '@/components/Upload/index.vue'
+import Hints from '@/components/Hints/index.vue'
 
 export default {
   name: 'Table',
@@ -380,40 +351,50 @@ export default {
   .el-card {
     min-height: 656px;
   }
+
   .control-btns {
     margin-bottom: 20px;
   }
+
   .search-form {
     padding-top: 18px;
     margin-bottom: 15px;
     background-color: #f7f8fb;
   }
+
   .el-table thead {
     font-weight: 600;
+
     th {
       background-color: #f2f3f7;
     }
   }
+
   .dialog-form {
     .el-input {
       width: 380px;
     }
+
     .footer-item {
       margin-top: 50px;
       text-align: right;
     }
   }
+
   .upload-box,
   .export-data {
     width: 300px;
     margin: 0 auto 30px;
   }
+
   .upload-box {
     width: 156px;
+
     .files-upload {
       color: #20a0ff;
     }
   }
+
   .hints {
     font-size: 12px;
     color: #aaa;

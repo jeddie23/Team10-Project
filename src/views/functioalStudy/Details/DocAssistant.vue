@@ -1,80 +1,83 @@
 <template>
-    <div class="org-tree-wrapper" :style="{ height: displayMode === 'vertical' ? '650px' : '1050px' }">
-      <Hints>
-        <template slot="hintName">医助工作树状图</template>
-        <template slot="hintInfo">
-          <p>医助岗位的工作内容、岗位责任、流程</p>
-        </template>
-      </Hints>
-      <div class="ctrl-box">
-        <div class="btn-item">
-          <span>排列方式：</span>
-          <el-radio-group v-model="displayMode" size="small">
-            <el-radio-button label="vertical">竖排</el-radio-button>
-            <el-radio-button label="horizontal">横排</el-radio-button>
-          </el-radio-group>
-        </div>
-        <div class="btn-item">
-          <span>展开全部：</span>
-          <el-switch v-model="expandAll" />
-        </div>
+  <div class="org-tree-wrapper" :style="{ height: displayMode === 'vertical' ? '650px' : '1050px' }">
+    <Hints>
+      <template slot="hintName">医助工作树状图</template>
+      <template slot="hintInfo">
+        <p>医助岗位的工作内容、岗位责任、流程</p>
+      </template>
+    </Hints>
+    <div class="ctrl-box">
+      <div class="btn-item">
+        <span>排列方式：</span>
+        <el-radio-group v-model="displayMode" size="small">
+          <el-radio-button label="vertical">竖排</el-radio-button>
+          <el-radio-button label="horizontal">横排</el-radio-button>
+        </el-radio-group>
       </div>
-      <div class="zoom-box">
-        <ZoomController v-model="zoom" :min="80" :max="120" :diff="10" />
+      <div class="btn-item">
+        <span>展开全部：</span>
+        <el-switch v-model="expandAll" />
       </div>
-      <OrgView :zoom-val="zoomVal" :expand-all="expandAll" :horizontal="horizontal" />
     </div>
-  </template>
+    <div class="zoom-box">
+      <ZoomController v-model="zoom" :min="80" :max="120" :diff="10" />
+    </div>
+    <OrgView :zoom-val="zoomVal" :expand-all="expandAll" :horizontal="horizontal" />
+  </div>
+</template>
   
-  <script>
-  import OrgView from '@/components/OrgTree/OrgView'
-  import ZoomController from '@/components/OrgTree/ZoomController'
-  import Hints from '@/components/Hints'
-  
-  export default {
-    name: 'docAssistant',
-    components: { OrgView, ZoomController, Hints },
-    data() {
-      return {
-        expandAll: true,
-        displayMode: 'vertical',
-        zoom: 100
-      }
+<script>
+import OrgView from '@/components/OrgTree/OrgView.vue'
+import ZoomController from '@/components/OrgTree/ZoomController.vue'
+import Hints from '@/components/Hints/index.vue'
+
+export default {
+  name: 'docAssistant',
+  components: { OrgView, ZoomController, Hints },
+  data() {
+    return {
+      expandAll: true,
+      displayMode: 'vertical',
+      zoom: 100
+    }
+  },
+  computed: {
+    zoomVal() {
+      return this.zoom / 100
     },
-    computed: {
-      zoomVal() {
-        return this.zoom / 100
-      },
-      horizontal() {
-        if (this.displayMode === 'vertical') {
-          return false
-        } else {
-          return true
-        }
+    horizontal() {
+      if (this.displayMode === 'vertical') {
+        return false
+      } else {
+        return true
       }
     }
   }
-  </script>
+}
+</script>
   
-  <style lang="less">
-  .org-tree-wrapper {
-    position: relative;
-    min-height: 580px;
-    .ctrl-box {
-      .btn-item {
-        margin-bottom: 10px;
-        .el-radio-button--small {
-          .el-radio-button__inner {
-            padding: 5px 10px;
-          }
+<style lang="less">
+.org-tree-wrapper {
+  position: relative;
+  min-height: 580px;
+
+  .ctrl-box {
+    .btn-item {
+      margin-bottom: 10px;
+
+      .el-radio-button--small {
+        .el-radio-button__inner {
+          padding: 5px 10px;
         }
       }
     }
-    .zoom-box {
-      position: absolute;
-      bottom: 0;
-      right: 25px;
-    }
   }
-  </style>
+
+  .zoom-box {
+    position: absolute;
+    bottom: 0;
+    right: 25px;
+  }
+}
+</style>
   
