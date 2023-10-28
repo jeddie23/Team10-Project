@@ -9,4 +9,4 @@ COPY dist /etc/nginx/html/
 EXPOSE 80
 
 # 设置容器启动时执行的命令
-CMD ["nginx", "-g", "daemon on;"]
+CMD ["nginx", "-g", "daemon off;"]
