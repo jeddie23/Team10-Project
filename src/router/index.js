@@ -267,11 +267,10 @@ router.beforeEach((to, from, next) => {
     } else {
       if (to.name == null) {
         let allRoute = [];
-        // routes = [...constantRoutes,...asyncRoutes]
         for (let i = 0; i < asyncRoutes.length; i++) {
-          router.addRoute(asyncRoutes[i]);
-          allRoute.push(asyncRoutes[i])
+          allRoute.push(asyncRoutes[i]);
         }
+        router.addRoutes(allRoute);  // 使用 addRoutes 添加整个数组
         sessionStorage.setItem('routes', JSON.stringify(allRoute))
         next({ ...to });
       } else {
