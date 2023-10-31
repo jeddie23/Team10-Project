@@ -1,41 +1,41 @@
 <template>
   <div class="table-inline-edit">
     <el-card shadow="always">
-      <!-- 操作栏 -->
+      <!-- Control Bar -->
       <div class="control-btns">
-        <el-button type="primary" @click="formVisible = true">新建</el-button>
-        <!-- <el-button type="primary" @click="handleImport">导入数据</el-button>
-                <el-button type="primary" @click="exportVisible = true">导出数据</el-button> -->
-        <el-button type="danger" v-auth="'administrator'" @click="batchDelete">批量删除</el-button>
+        <el-button type="primary" @click="formVisible = true">New</el-button>
+        <!-- <el-button type="primary" @click="handleImport">Import Data</el-button>
+                <el-button type="primary" @click="exportVisible = true">Export Data</el-button> -->
+        <el-button type="danger" v-auth="'administrator'" @click="batchDelete">Batch Delete</el-button>
       </div>
-      <!-- 查询栏 -->
+      <!-- Search Bar -->
       <el-form ref="searchForm" :inline="true" :model="listQuery" label-width="90px" class="search-form">
-        <el-form-item label="疾病类型">
-          <el-input v-model="listQuery.type" placeholder="请输入内容" clearable />
+        <el-form-item label="Disease Type">
+          <el-input v-model="listQuery.type" placeholder="Please Enter" clearable />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">查询</el-button>
+          <el-button type="primary" @click="onSubmit">Search</el-button>
         </el-form-item>
       </el-form>
       <el-table v-loading="listLoading" :data="tableList" tooltip-effect="dark" style="width: 100%" size="medium"
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="50"> </el-table-column>
-        <el-table-column prop="diseaseId" label="编号" align="center" width="55" />
-        <el-table-column prop="diseaseName" label="疾病名称" align="center" />
-        <el-table-column label="接诊情况" align="center">
+        <el-table-column prop="diseaseId" label="ID" align="center" width="55" />
+        <el-table-column prop="diseaseName" label="Disease Name" align="center" />
+        <el-table-column label="Reception Condition" align="center">
           <template slot-scope="scope">{{ scope.row.diseaseSymptom }}</template>
         </el-table-column>
-        <el-table-column label="病例检查" align="center">
+        <el-table-column label="Case Check" align="center">
           <template slot-scope="scope">
             <span>{{ scope.row.diseaseExam }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="diseaseResult" label="诊断结果" align="center" />
-        <el-table-column prop="diseaseTreat" label="治疗方案" align="center" />
-        <el-table-column align="center" label="操作" width="250">
+        <el-table-column prop="diseaseResult" label="Diagnosis Result" align="center" />
+        <el-table-column prop="diseaseTreat" label="Treatment Plan" align="center" />
+        <el-table-column align="center" label="Action" width="250">
           <template slot-scope="scope">
-            <el-button type="primary" size="small" @click="handleDetail(scope.row.diseaseId)">详情</el-button>
-            <el-button type="danger" size="small" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            <el-button type="primary" size="small" @click="handleDetail(scope.row.diseaseId)">Details</el-button>
+            <el-button type="danger" size="small" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -43,6 +43,7 @@
     <checkDialog :formVisible="formVisible" @isShow="formVisible = !formVisible; fetchData()"></checkDialog>
   </div>
 </template>
+
   
 <script>
 
@@ -92,7 +93,7 @@ export default {
     fetchData() {
       this.listLoading = true;
       // 获取数据列表接口
-      get("/api/disease/getDiseases")
+      get("http://20.2.217.111:9001/apis/disease/getDisease")
         .then((res) => {
           let data = [];
           data = res;
@@ -123,6 +124,7 @@ export default {
       });
     },
     handleDetail(id) {
+      console.log(id);
       this.$router.push({ path: '/case/casedetail', query: { id } })
     },
     handleDelete(inds, row) {

@@ -63,7 +63,7 @@ export const asyncRoutes = [
         name: "medicine-manage",
         component: () => import("../views/itemManage/medicineManage.vue"),
         meta: {
-          title: "药品管理",
+          title: "Medicine Management",
         },
       },
       {
@@ -71,7 +71,7 @@ export const asyncRoutes = [
         name: "item-manage",
         component: () => import("../views/itemManage/itemManage.vue"),
         meta: {
-          title: "检查项目管理",
+          title: "Inspection Project Management",
         },
       },
     ],

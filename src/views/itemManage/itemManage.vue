@@ -1,16 +1,16 @@
 <template>
   <div>
     <el-card shadow="always">
-      <!-- 操作栏 -->
+      <!-- Operation Bar -->
       <div class="control-btns">
         <el-card class="control">
           <el-button type="primary" @click="handleCreate"
-            >新增检查项目</el-button
+            >Add Inspection Item</el-button
           >
         </el-card>
       </div>
-      <!-- 查询栏 -->
-      <!-- 表格栏 -->
+      <!-- Search Bar -->
+      <!-- Table Bar -->
       <el-table
         ref="multipleTable"
         v-loading="listLoading"
@@ -21,68 +21,81 @@
         size="medium"
       >
         <el-table-column type="expand">
-            <template slot-scope="props">
-                <el-form label-position="left" inline class="demo-table-expand">
-                <el-alert
-                    title="点击按钮查看宠物指标"
-                    type="info">
-                </el-alert>
-                <el-form-item>
-                    <el-button @click="animalInfo('猫',props.row.itemId)" type="primary">猫</el-button>
-                </el-form-item>
-                <el-form-item>
-                    <el-button @click="animalInfo('狗',props.row.itemId)" type="primary">狗</el-button>
-                </el-form-item>
-                <el-descriptions title="宠物指标">
-                    <el-descriptions-item label="正常指标下限">{{ standardData.lowerLimit ||'暂无数据请添加' }}</el-descriptions-item>
-                    <el-descriptions-item label="正常指标上限">{{ standardData.upperLimit ||'暂无数据请添加'}}</el-descriptions-item>
-                </el-descriptions>
-                </el-form>
-            </template>
+          <template slot-scope="props">
+            <el-form label-position="left" inline class="demo-table-expand">
+              <el-alert
+                title="Click the button to view pet indicators"
+                type="info"
+              >
+              </el-alert>
+              <el-form-item>
+                <el-button
+                  @click="animalInfo('Cat', props.row.itemId)"
+                  type="primary"
+                  >Cat</el-button
+                >
+              </el-form-item>
+              <el-form-item>
+                <el-button
+                  @click="animalInfo('Dog', props.row.itemId)"
+                  type="primary"
+                  >Dog</el-button
+                >
+              </el-form-item>
+              <el-descriptions title="Pet Indicators">
+                <el-descriptions-item label="Normal Indicator Lower Limit">{{
+                  standardData.lowerLimit || "No data, please add"
+                }}</el-descriptions-item>
+                <el-descriptions-item label="Normal Indicator Upper Limit">{{
+                  standardData.upperLimit || "No data, please add"
+                }}</el-descriptions-item>
+              </el-descriptions>
+            </el-form>
+          </template>
         </el-table-column>
         <el-table-column
           prop="itemId"
-          label="检查项目id"
+          label="Inspection Item ID"
           align="center"
           width="100"
         />
         <el-table-column
           prop="itemDepartment"
-          label="检查项目部门"
+          label="Inspection Department"
           align="center"
           width="200"
         />
         <el-table-column
           prop="itemDescription"
-          label="检查项目描述"
+          label="Inspection Description"
           align="center"
         />
         <el-table-column
           prop="money"
-          label="检查项目价格"
+          label="Inspection Price"
           align="center"
           width="160"
         />
-        <el-table-column label="操作" align="center">
+        <el-table-column label="Operation" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
               type="success"
               @click="standardVisible = true"
-              >新增生理指标</el-button
+              >Add Physiological Indicator</el-button
             >
             <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
-              >编辑</el-button
+              >Edit</el-button
             >
             <el-button size="mini" type="danger" @click="handleDelete()"
-              >删除</el-button
+              >Delete</el-button
             >
           </template>
         </el-table-column>
       </el-table>
-      <!-- 增加检查项目弹出 -->
+      <!-- Add Inspection Item Popup -->
       <el-dialog
-        :title="isEdit ? '编辑检查项目' : '新增检查项目'"
+        :title="isEdit ? 'Edit Inspection Item' : 'Add Inspection Item'"
         :visible.sync="userVisible"
         width="30%"
         class="dialog-form"
@@ -94,29 +107,29 @@
           :rules="formRules"
           label-width="120px"
         >
-          <el-form-item label="检查项目部门：" prop="itemDepartment">
+          <el-form-item label="Inspection Department:" prop="itemDepartment">
             <el-input v-model="newUserForm.itemDepartment" />
           </el-form-item>
-          <el-form-item label="检查项目描述：" prop="itemDescription">
+          <el-form-item label="Inspection Description:" prop="itemDescription">
             <el-input v-model="newUserForm.itemDescription" />
           </el-form-item>
-          <el-form-item label="检查项目价格：" prop="money">
+          <el-form-item label="Inspection Price:" prop="money">
             <el-input v-model="newUserForm.money" />
           </el-form-item>
           <div class="footer-item">
-            <el-button @click="cancleUserForm">取 消</el-button>
+            <el-button @click="cancleUserForm">Cancel</el-button>
             <el-button
               type="primary"
               :disabled="isSubmit"
               @click="submitForm('newUserForm')"
-              >确 定</el-button
+              >Confirm</el-button
             >
           </div>
         </el-form>
       </el-dialog>
-      <!-- 增加检查标准弹出 -->
+      <!-- Add Inspection Standard Popup -->
       <el-dialog
-        :title="'增加指标'"
+        :title="'Add Indicator'"
         :visible.sync="standardVisible"
         width="30%"
         class="dialog-form"
@@ -128,29 +141,33 @@
           :rules="formRules"
           label-width="120px"
         >
-          <el-form-item label="宠物类型：" prop="animalType">
-            <el-select v-model="newStandardForm.animalType" placeholder="请选择">
-                <el-option
+          <el-form-item label="Pet Type:" prop="animalType">
+            <el-select
+              v-model="newStandardForm.animalType"
+              placeholder="Please select"
+            >
+              <el-option
                 v-for="item in options"
                 :key="item.value"
                 :label="item.label"
-                :value="item.value">
-                </el-option>
+                :value="item.value"
+              >
+              </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="正常指标下限：" prop="lowerLimit">
+          <el-form-item label="Normal Indicator Lower Limit:" prop="lowerLimit">
             <el-input v-model="newStandardForm.lowerLimit" />
           </el-form-item>
-          <el-form-item label="正常指标上限：" prop="upperLimit">
-            <el-input v-model="newStandardForm.upperLimit"/>
+          <el-form-item label="Normal Indicator Upper Limit:" prop="upperLimit">
+            <el-input v-model="newStandardForm.upperLimit" />
           </el-form-item>
           <div class="footer-item">
-            <el-button @click="cancleStandardForm">取 消</el-button>
+            <el-button @click="cancleStandardForm">Cancel</el-button>
             <el-button
               type="primary"
               :disabled="isSubmit"
               @click="submitStandardForm"
-              >确 定</el-button
+              >Confirm</el-button
             >
           </div>
         </el-form>
@@ -204,11 +221,14 @@ export default {
     this.fetchData();
   },
   methods: {
-    animalInfo(type,itemId){
-        get("/api/standard/getSpecificStandard",{animalType:type,itemId}).then(res=>{
-            console.log(res);
-            this.standardData = res
-        })
+    animalInfo(type, itemId) {
+      get("/api/standard/getSpecificStandard", {
+        animalType: type,
+        itemId,
+      }).then((res) => {
+        console.log(res);
+        this.standardData = res;
+      });
     },
     handleCurrentChange(row) {
       this.itemId = row.itemId;
@@ -298,16 +318,19 @@ export default {
       }
     },
     submitStandardForm() {
-        this.isSubmit = true;
-        post("/api/standard/addStandard",{...this.newStandardForm,itemId:this.itemId}).then(res=>{
-            this.isSubmit = false;
-            this.$message({
-              message: "新增指标",
-              type: "success",
-            });
-            this.standardVisible = false
-            this.$refs.standardUserForm.resetFields();
-        })
+      this.isSubmit = true;
+      post("/api/standard/addStandard", {
+        ...this.newStandardForm,
+        itemId: this.itemId,
+      }).then((res) => {
+        this.isSubmit = false;
+        this.$message({
+          message: "新增指标",
+          type: "success",
+        });
+        this.standardVisible = false;
+        this.$refs.standardUserForm.resetFields();
+      });
     },
   },
 };

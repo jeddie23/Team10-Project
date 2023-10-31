@@ -66,7 +66,7 @@ export default {
         }
         if (valid) {
           this.loading = true
-          post(`/api/user/login`,data).then((res)=>{
+          post(`http://128.1.164.211:8080/user/login`,data).then((res)=>{
             this.loading = false;
             sessionStorage.setItem('userinfo',JSON.stringify(res))
             if(res.userRole=='student')this.$router.push({ path: '/hospitalguide' });
