@@ -161,37 +161,37 @@ export const constantRoutes = [
       },
     ],
   },
-  {
-    path: "/studenttest",
-    name: "studentTest",
-    component: Layout,
-    hidden: role == 'student' ? false : true,
-    redirect: "/student/paperlist",
-    meta: {
-      title: "学生测试",
-      icon: "vue-dsn-icon-bianjiqi",
-      auth: false,
-    },
-    children: [
-      {
-        path: "paperlist",
-        name: "paperList",
-        component: () => import("../views/studentTest/paperList.vue"),
-        meta: {
-          title: "测试列表",
-        },
-      },
-      {
-        path: "begintest",
-        name: "beginTest",
-        hidden: true,
-        component: () => import("../views/studentTest/beginTest.vue"),
-        meta: {
-          title: "考试作答",
-        },
-      },
-    ],
-  },
+  // {
+  //   path: "/studenttest",
+  //   name: "studentTest",
+  //   component: Layout,
+  //   hidden: role == 'student' ? false : true,
+  //   redirect: "/student/paperlist",
+  //   meta: {
+  //     title: "学生测试",
+  //     icon: "vue-dsn-icon-bianjiqi",
+  //     auth: false,
+  //   },
+  //   children: [
+  //     {
+  //       path: "paperlist",
+  //       name: "paperList",
+  //       component: () => import("../views/studentTest/paperList.vue"),
+  //       meta: {
+  //         title: "测试列表",
+  //       },
+  //     },
+  //     {
+  //       path: "begintest",
+  //       name: "beginTest",
+  //       hidden: true,
+  //       component: () => import("../views/studentTest/beginTest.vue"),
+  //       meta: {
+  //         title: "考试作答",
+  //       },
+  //     },
+  //   ],
+  // },
   {
     path: "/login",
     name: "Login",

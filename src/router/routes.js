@@ -133,65 +133,65 @@ export const asyncRoutes = [
   //   //   }
   //   // ]
   // },
-  {
-    path: '/image',
-    name: 'Image',
-    component: Layout,
-    redirect: '/image/image-cropper',
-    meta: {
-      title: 'Image Cropper',
-      icon: 'vue-dsn-icon-picture',
-      auth: true
-    },
-    children: [
-      {
-        path: 'image-cropper',
-        name: 'ImageCropper',
-        component: () => import('../views/image/ImageCropper.vue'),
-        meta: {
-          title: '图片裁剪'
-        }
-      },
-      {
-        path: 'image-compress',
-        name: 'ImageCompress',
-        component: () => import('../views/image/ImageCompress.vue'),
-        meta: {
-          title: '图片压缩'
-        }
-      },
-      {
-        path: 'image-synthesizer',
-        name: 'ImageSynthesizer',
-        component: () => import('../views/image/ImageSynthesizer.vue'),
-        meta: {
-          title: '图片合成'
-        }
-      }
-    ]
-  },
-  {
-    path: '/video',
-    name: 'Video',
-    hidden: true,
-    component: Layout,
-    redirect: '/video/video-player',
-    meta: {
-      title: '视频处理',
-      icon: 'vue-dsn-icon-video',
-      auth: true
-    },
-    children: [
-      {
-        path: 'video-mark',
-        name: 'VideoMark',
-        component: () => import('../views/video/VideoMark.vue'),
-        meta: {
-          title: '视频处理'
-        }
-      }
-    ]
-  },
+  // {
+  //   path: '/image',
+  //   name: 'Image',
+  //   component: Layout,
+  //   redirect: '/image/image-cropper',
+  //   meta: {
+  //     title: 'Image Cropper',
+  //     icon: 'vue-dsn-icon-picture',
+  //     auth: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'image-cropper',
+  //       name: 'ImageCropper',
+  //       component: () => import('../views/image/ImageCropper.vue'),
+  //       meta: {
+  //         title: '图片裁剪'
+  //       }
+  //     },
+  //     {
+  //       path: 'image-compress',
+  //       name: 'ImageCompress',
+  //       component: () => import('../views/image/ImageCompress.vue'),
+  //       meta: {
+  //         title: '图片压缩'
+  //       }
+  //     },
+  //     {
+  //       path: 'image-synthesizer',
+  //       name: 'ImageSynthesizer',
+  //       component: () => import('../views/image/ImageSynthesizer.vue'),
+  //       meta: {
+  //         title: '图片合成'
+  //       }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/video',
+  //   name: 'Video',
+  //   hidden: true,
+  //   component: Layout,
+  //   redirect: '/video/video-player',
+  //   meta: {
+  //     title: '视频处理',
+  //     icon: 'vue-dsn-icon-video',
+  //     auth: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'video-mark',
+  //       name: 'VideoMark',
+  //       component: () => import('../views/video/VideoMark.vue'),
+  //       meta: {
+  //         title: '视频处理'
+  //       }
+  //     }
+  //   ]
+  // },
   // {
   //   // path: '/editors',
   //   // name: 'Editors',
