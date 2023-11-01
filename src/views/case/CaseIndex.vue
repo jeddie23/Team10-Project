@@ -22,19 +22,22 @@
         <el-table-column type="selection" width="50"> </el-table-column>
         <el-table-column prop="diseaseId" label="ID" align="center" width="55" />
         <el-table-column prop="diseaseName" label="Disease Name" align="center" />
-        <el-table-column label="Reception Condition" align="center">
-          <template slot-scope="scope">{{ scope.row.diseaseSymptom }}</template>
+        <el-table-column label="diseaeType" align="center">
+          <template slot-scope="scope">{{ scope.row.diseaseType }}</template>
         </el-table-column>
-        <el-table-column label="Case Check" align="center">
+        <el-table-column label="Symptom" align="center">
           <template slot-scope="scope">
-            <span>{{ scope.row.diseaseExam }}</span>
+            <el-button type="primary" size="small" @click="download(scope.row,'symptom')">Download</el-button>
           </template>
         </el-table-column>
-        <el-table-column prop="diseaseResult" label="Diagnosis Result" align="center" />
-        <el-table-column prop="diseaseTreat" label="Treatment Plan" align="center" />
+        <el-table-column label="Treatment" align="center">
+          <template slot-scope="scope">
+            <el-button type="primary" size="small" @click="download(scope.row,'treat')">Download</el-button>
+          </template>
+        </el-table-column>
         <el-table-column align="center" label="Action" width="250">
           <template slot-scope="scope">
-            <el-button type="primary" size="small" @click="handleDetail(scope.row.diseaseId)">Details</el-button>
+            <!-- <el-button type="primary" size="small" @click="handleDetail(scope.row.diseaseId)">Details</el-button> -->
             <el-button type="danger" size="small" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
           </template>
         </el-table-column>
@@ -48,7 +51,7 @@
 <script>
 
 // import { get } from 'js-cookie'
-import { post, get } from "@/api/login";
+import { post, get, deleteData } from "@/api/login";
 import checkDialog from "./checkDialog.vue"
 export default {
   name: "TableInlineEdit",
@@ -89,6 +92,11 @@ export default {
     this.fetchData();
   },
   methods: {
+    download(row,type){
+      get("http://20.2.217.111:9001/apis/disease/getDiseaseFile",{id:row.diseaseId,type}).then(res=>{
+        window.open(res, '_blank');
+      })
+    },
     // 获取数据列表
     fetchData() {
       this.listLoading = true;
@@ -133,7 +141,7 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       }).then(() => {
-        get("/api/disease/deleteDiseaseById", { id: row.diseaseId }).then(() => {
+        deleteData("http://20.2.217.111:9001/apis/disease/deleteDiseaseById", { id: row.diseaseId }).then(() => {
           this.$message.success("删除成功");
           this.fetchData();
         });

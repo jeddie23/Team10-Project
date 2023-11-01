@@ -7,13 +7,13 @@
       @viewChange="viewChange"
     >
             <wei-markers :config="marker1" >
-            <el-button type="primary" icon="el-icon-top " @click="marker1Click('guideYingxiang')">影像学检查室</el-button>
+            <el-button type="primary" icon="el-icon-top " @click="marker1Click('guideYingxiang')">imaging examination room</el-button>
             </wei-markers>
             <wei-markers :config="marker2" >
-            <el-button type="primary" icon="el-icon-top " @click="marker2Click('guideMenzhen')">门诊室</el-button>
+            <el-button type="primary" icon="el-icon-top " @click="marker2Click('guideMenzhen')">clinic</el-button>
             </wei-markers>
             <wei-markers :config="marker3" >
-            <el-button type="primary" icon="el-icon-top " @click="marker3Click('标记3')">输液室</el-button>
+            <el-button type="primary" icon="el-icon-top " @click="marker3Click('标记3')">Infusion Room</el-button>
             </wei-markers>
     </wei-photo>
   </div>

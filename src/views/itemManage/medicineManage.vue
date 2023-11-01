@@ -18,9 +18,9 @@
         style="width: 100%"
         size="medium"
       >
-        <el-table-column prop="medicineId" label="Drug ID" align="center" />
-        <el-table-column prop="medicineName" label="Drug Name" align="center" />
-        <el-table-column prop="medicineDescription" label="Drug Description" align="center" />
+        <el-table-column prop="medicine_id" label="Drug ID" align="center" />
+        <el-table-column prop="medicine_name" label="Drug Name" align="center" />
+        <el-table-column prop="medicine_description" label="Medicine Description" align="center" />
         <el-table-column prop="money" label="Drug Unit Price" align="center" />
         <el-table-column prop="storage" label="Drug Stock" align="center" />
         <el-table-column label="Operation" align="center" width="200">
@@ -54,10 +54,10 @@
           label-width="120px"
         >
           <el-form-item label="Drug Description:" prop="medicineDescription">
-            <el-input v-model="newUserForm.medicineDescription" />
+            <el-input v-model="newUserForm.medicine_description" />
           </el-form-item>
           <el-form-item label="Drug Name:" prop="medicineName">
-            <el-input v-model="newUserForm.medicineName" />
+            <el-input v-model="newUserForm.medicine_name" />
           </el-form-item>
           <el-form-item label="Drug Unit Price:" prop="money">
             <el-input v-model="newUserForm.money" />
@@ -93,8 +93,8 @@
         title: "",
         // 新增/编辑提交表单对象
         newUserForm: {
-          medicineDescription: "",
-          medicineName: "",
+          medicine_description: "",
+          medicine_name: "",
           money: "",
           storage: "",
         },
@@ -110,7 +110,7 @@
     },
     methods: {
       handleCurrentChange(row) {
-          this.medicineId=row.medicineId;
+          this.medicineId=row.medicine_id;
         },
       cancleUserForm() {
         this.$refs.newUserForm.resetFields();
@@ -129,7 +129,7 @@
         this.medicineId = medicineId;
       },
       handleDelete() {
-        get("/api/deleteMedicine",{medicineID:this.medicineId}).then(res=>{
+        get("http://20.2.233.129:9001/apis/medical_resource/deleteMedicine",{medicine_id:this.medicineId}).then(res=>{
           this.$message({
               message: "删除药品成功",
               type: "warning",
@@ -144,7 +144,7 @@
       fetchData() {
         this.listLoading = true;
         // 获取数据列表接口
-        get("/api/allMedicine")
+        get("http://20.2.233.129:9001/apis/medical_resource/allMedicine")
           .then((res) => {
             this.total = res.length;
             this.tableData = res;
@@ -166,7 +166,7 @@
             phoneNumber,
           };
           this.isSubmit = true;
-          post("/api/addMedicine",this.newUserForm).then((res) => {
+          post("http://20.2.233.129:9001/apis/medical_resource/addMedicine",this.newUserForm).then((res) => {
             this.$message({
               message: "新增药品成功",
               type: "success",

@@ -66,14 +66,14 @@ export const asyncRoutes = [
           title: "Medicine Management",
         },
       },
-      {
-        path: "item-manage",
-        name: "item-manage",
-        component: () => import("../views/itemManage/itemManage.vue"),
-        meta: {
-          title: "Inspection Project Management",
-        },
-      },
+      // {
+      //   path: "item-manage",
+      //   name: "item-manage",
+      //   component: () => import("../views/itemManage/itemManage.vue"),
+      //   meta: {
+      //     title: "Inspection Project Management",
+      //   },
+      // },
     ],
   },
   {
@@ -264,7 +264,7 @@ export const asyncRoutes = [
         name: 'CaseIndex',
         component: () => import('../views/case/CaseIndex.vue'),
         meta: {
-          title: '病例管理'
+          title: 'Disease Case Management'
         }
       },
       {

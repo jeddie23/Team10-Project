@@ -7,10 +7,10 @@
         @viewChange="viewChange"
       >
               <wei-markers :config="marker1" >
-              <el-button type="primary" icon="el-icon-top " @click="marker1Click('guideAll')">前台</el-button>
+              <el-button type="primary" icon="el-icon-top " @click="marker1Click('guideAll')">front desk</el-button>
               </wei-markers>
               <wei-markers :config="marker2" >
-              <el-button type="primary" icon="el-icon-top " @click="marker2Click('guideZoulang')">门诊走廊</el-button>
+              <el-button type="primary" icon="el-icon-top " @click="marker2Click('guideZoulang')">Outpatient corridor</el-button>
               </wei-markers>
 
       </wei-photo>

@@ -31,20 +31,20 @@ export const constantRoutes = [
       auth: false,
     },
     children: [
-      {
-        path: "generalguide",
-        name: "generalGuide",
-        component: () => import("../views/hospitalGuide/generalGuide.vue"),
-        meta: {
-          title: "综合导览",
-        },
-      },
+      // {
+      //   path: "generalguide",
+      //   name: "generalGuide",
+      //   component: () => import("../views/hospitalGuide/generalGuide.vue"),
+      //   meta: {
+      //     title: "综合导览",
+      //   },
+      // },
       {
         path: "guideall",
         name: "guideAll",
         component: () => import("../views/hospitalGuide/GuideAll.vue"),
         meta: {
-          title: "全景导览",
+          title: "Panoramic Tour",
         },
       },
       {
@@ -94,73 +94,73 @@ export const constantRoutes = [
       },
     ],
   },
-  {
-    path: "/study",
-    name: "Study",
-    component: Layout,
-    redirect: "/study/cosplaystudy",
-    meta: {
-      title: "Functional Study",
-      icon: "vue-dsn-icon-bianjiqi",
-      auth: false,
-    },
-    children: [
-      {
-        path: "cosplaystudy",
-        name: "cosplayStudy",
-        component: () => import("../views/functioalStudy/cosplayStudy.vue"),
-        meta: {
-          title: "角色扮演",
-        },
-      },
-      {
-        path: "casestudy",
-        name: "caseStudy",
-        component: () => import("../views/functioalStudy/caseStudy.vue"),
-        meta: {
-          title: "病例学习",
-        },
-      },
-      {
-        path: "standard-study",
-        name: "standard-study",
-        component: () => import("../views/functioalStudy/standardStudy.vue"),
-        meta: {
-          title: "检查项目学习",
-        },
-      },
-      {
-        path: "frontstage",
-        name: "frontStage",
-        hidden: true,
-        component: () =>
-          import("../views/functioalStudy/Details/FrontStage.vue"),
-        meta: {
-          title: "前台",
-        },
-      },
-      {
-        path: "docassistant",
-        name: "docAssistant",
-        hidden: true,
-        component: () =>
-          import("../views/functioalStudy/Details/DocAssistant.vue"),
-        meta: {
-          title: "医助",
-        },
-      },
-      {
-        path: "animaldoc",
-        name: "animalDoc",
-        hidden: true,
-        component: () =>
-          import("../views/functioalStudy/Details/AnimalDoc.vue"),
-        meta: {
-          title: "兽医",
-        },
-      },
-    ],
-  },
+  // {
+  //   path: "/study",
+  //   name: "Study",
+  //   component: Layout,
+  //   redirect: "/study/cosplaystudy",
+  //   meta: {
+  //     title: "Functional Study",
+  //     icon: "vue-dsn-icon-bianjiqi",
+  //     auth: false,
+  //   },
+  //   children: [
+  //     {
+  //       path: "cosplaystudy",
+  //       name: "cosplayStudy",
+  //       component: () => import("../views/functioalStudy/cosplayStudy.vue"),
+  //       meta: {
+  //         title: "角色扮演",
+  //       },
+  //     },
+  //     {
+  //       path: "casestudy",
+  //       name: "caseStudy",
+  //       component: () => import("../views/functioalStudy/caseStudy.vue"),
+  //       meta: {
+  //         title: "病例学习",
+  //       },
+  //     },
+  //     {
+  //       path: "standard-study",
+  //       name: "standard-study",
+  //       component: () => import("../views/functioalStudy/standardStudy.vue"),
+  //       meta: {
+  //         title: "检查项目学习",
+  //       },
+  //     },
+  //     {
+  //       path: "frontstage",
+  //       name: "frontStage",
+  //       hidden: true,
+  //       component: () =>
+  //         import("../views/functioalStudy/Details/FrontStage.vue"),
+  //       meta: {
+  //         title: "前台",
+  //       },
+  //     },
+  //     {
+  //       path: "docassistant",
+  //       name: "docAssistant",
+  //       hidden: true,
+  //       component: () =>
+  //         import("../views/functioalStudy/Details/DocAssistant.vue"),
+  //       meta: {
+  //         title: "医助",
+  //       },
+  //     },
+  //     {
+  //       path: "animaldoc",
+  //       name: "animalDoc",
+  //       hidden: true,
+  //       component: () =>
+  //         import("../views/functioalStudy/Details/AnimalDoc.vue"),
+  //       meta: {
+  //         title: "兽医",
+  //       },
+  //     },
+  //   ],
+  // },
   // {
   //   path: "/studenttest",
   //   name: "studentTest",

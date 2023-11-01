@@ -12,6 +12,18 @@ export function get(url,params) {
   return service(config);
 }
 
+export function deleteData(url, params) {
+  const config = {
+    method: "delete",
+    url
+  }
+  if (params) {
+    config.params = params;
+  }
+  return service(config);
+}
+
+
 export function post(url,data) {
   const config={
     method: "post",
