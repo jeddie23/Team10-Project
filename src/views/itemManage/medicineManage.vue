@@ -110,6 +110,7 @@
     },
     methods: {
       handleCurrentChange(row) {
+          console.log(row);
           this.medicineId=row.medicine_id;
         },
       cancleUserForm() {
@@ -126,7 +127,7 @@
             money,
             storage
         }
-        this.medicineId = medicineId;
+        this.medicineId = row.medicine_id;
       },
       handleDelete() {
         get("http://20.2.233.129:9001/apis/medical_resource/deleteMedicine",{medicine_id:this.medicineId}).then(res=>{
@@ -187,6 +188,7 @@
             userPhoneNumber: phoneNumber,
           };
           this.isSubmit = true;
+          console.log(this.medicineId);
           post("http://20.2.233.129:9001/apis/medical_resource/updateMedicine",{...this.newUserForm,medicine_id:this.medicineId}).then((res) => {
             this.$message({
               message: "Edit drug successfully",
