@@ -136,13 +136,13 @@ export default {
       this.$router.push({ path: '/case/casedetail', query: { id } })
     },
     handleDelete(inds, row) {
-      this.$confirm("是否删除该病例?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
+      this.$confirm("Whether to delete this case?", "prompt", {
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
         type: "warning",
       }).then(() => {
         deleteData("http://20.2.217.111:9001/apis/disease/deleteDiseaseById", { id: row.diseaseId }).then(() => {
-          this.$message.success("删除成功");
+          this.$message.success("successfully deleted");
           this.fetchData();
         });
       });

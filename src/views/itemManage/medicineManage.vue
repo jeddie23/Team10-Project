@@ -20,7 +20,7 @@
       >
         <el-table-column prop="medicine_id" label="Drug ID" align="center" />
         <el-table-column prop="medicine_name" label="Drug Name" align="center" />
-        <el-table-column prop="medicine_description" label="Medicine Description" align="center" />
+        <el-table-column prop="medicine_description" label="Drug Description" align="center" />
         <el-table-column prop="money" label="Drug Unit Price" align="center" />
         <el-table-column prop="storage" label="Drug Stock" align="center" />
         <el-table-column label="Operation" align="center" width="200">
@@ -53,10 +53,10 @@
           :rules="formRules"
           label-width="120px"
         >
-          <el-form-item label="Drug Description:" prop="medicineDescription">
+          <el-form-item label="Drug Description:" prop="medicine_description">
             <el-input v-model="newUserForm.medicine_description" />
           </el-form-item>
-          <el-form-item label="Drug Name:" prop="medicineName">
+          <el-form-item label="Drug Name:" prop="medicine_name">
             <el-input v-model="newUserForm.medicine_name" />
           </el-form-item>
           <el-form-item label="Drug Unit Price:" prop="money">
@@ -119,10 +119,10 @@
       handleEdit(index,row) {
         this.userVisible = true;
         this.isEdit = true;
-        const {medicineId,medicineDescription,medicineName,money,storage} = row;
+        const {medicineId,medicine_description,medicine_name,money,storage} = row;
         this.newUserForm = {
-            medicineDescription,
-            medicineName,
+            medicine_description,
+            medicine_name,
             money,
             storage
         }
@@ -168,7 +168,7 @@
           this.isSubmit = true;
           post("http://20.2.233.129:9001/apis/medical_resource/addMedicine",this.newUserForm).then((res) => {
             this.$message({
-              message: "新增药品成功",
+              message: "Added drug successfully",
               type: "success",
             });
             this.$refs.newUserForm.resetFields();
@@ -187,9 +187,9 @@
             userPhoneNumber: phoneNumber,
           };
           this.isSubmit = true;
-          post("/api/updateMedicine",{...this.newUserForm,medicineId:this.medicineId}).then((res) => {
+          post("http://20.2.233.129:9001/apis/medical_resource/updateMedicine",{...this.newUserForm,medicine_id:this.medicineId}).then((res) => {
             this.$message({
-              message: "编辑药品成功",
+              message: "Edit drug successfully",
               type: "success",
             });
             this.$refs.newUserForm.resetFields();
