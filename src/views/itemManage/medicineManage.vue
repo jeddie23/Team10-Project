@@ -132,7 +132,7 @@
       handleDelete() {
         get("http://20.2.233.129:9001/apis/medical_resource/deleteMedicine",{medicine_id:this.medicineId}).then(res=>{
           this.$message({
-              message: "删除药品成功",
+              message: "Delete medicine successfully",
               type: "warning",
             });
             this.fetchData();
