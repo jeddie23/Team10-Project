@@ -168,7 +168,7 @@ export default {
     fetchData() {
       this.listLoading = true;
       // 获取数据列表接口
-      get("/api/user/getUsers")
+      get("http://128.1.164.211:8080/user/getUsers")
         .then((res) => {
           this.total = res.length;
           this.tableData = res;
